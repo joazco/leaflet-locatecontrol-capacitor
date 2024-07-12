@@ -35,6 +35,7 @@ leaflet-locatecontrol-capacitor is compatible with iOS, Android, and Web.
 
 ```typescript
 import L from "leaflet";
+import { WatchPositionCallback } from "@capacitor/geolocation";
 import "leaflet.locatecontrol/dist/L.Control.Locate.min.css"; // Import styles
 import "leaflet/dist/leaflet.css";
 
@@ -71,11 +72,12 @@ const controlLocate = L.control
   .addTo(m);
 
 // Optionally start with a default position
+// Optionally callback for watch positon
 controlLocate.start({
   lat: currentPosition?.coords.latitude,
   lng: currentPosition?.coords.longitude,
   accuracy: currentPosition?.coords.accuracy,
-});
+}, (position: WatchPositionCallback) => {});
 
 // HTML container for the map
 <div style="width: '100%'; height: '100%'" id="map" />;
@@ -84,4 +86,10 @@ controlLocate.start({
 ## Warning
 
 The `watch` function of the `@capacitor/geolocation` plugin is utilized within the `leaflet-locatecontrol-capacitor` plugin. If the plugin does not function properly, it might be due to a conflict arising if your code is already watching the position. In such cases, you can resolve the issue by using the `clearWatch` function to stop previous watch processes.
+
+***If you want to listen to the real-time position while displaying the map with the Leaflet.Locate plugin, you have the option to add a callback to the start function:***
+```typescript
+start(defaultPosition?: Position, callbackWatchPosition?: (position: WatchPositionCallback) => void) => void
+``` 
+
 
