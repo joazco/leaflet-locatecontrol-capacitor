@@ -1,5 +1,5 @@
 /*!
-Copyright (c) 2016 Dominik Moritz
+@Author AZOULAY Jordan
 
 This file is part of the leaflet locate control. It is licensed under the MIT license.
 You can find the project at: https://github.com/domoritz/leaflet-locatecontrol
@@ -443,8 +443,8 @@ var define;
          * - activates the engine
          * - draws the marker (if coordinates available)
          */
-        start(defaultLatLng) {
-            this._activate(defaultLatLng).then(() => {
+        start(defaultLatLng, callback) {
+            this._activate(defaultLatLng, callback).then(() => {
                 if (this._event) {
                     this._drawMarker(this._map);
 
@@ -490,7 +490,7 @@ var define;
          * It should set the this._active to true and do nothing if
          * this._active is true.
          */
-        _activate: async function (defaultLatLng) {
+        _activate: async function (defaultLatLng, callback) {
             if (!this._active) {
                 this._active = true;
                 try {
@@ -512,6 +512,7 @@ var define;
                     }, (position) => {
                         try {
                             this._onLocationFound(position);
+                            callback(position);
                         } catch (e) {
                             console.error("🚀 ~ error on location:", e)
                             this._onLocationError(e);
