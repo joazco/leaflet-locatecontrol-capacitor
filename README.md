@@ -30,6 +30,8 @@ leaflet-locatecontrol-capacitor is compatible with iOS, Android, and Web.
    npm install @capacitor/geolocation
    npx cap sync  # or use `ionic capacitor sync` if you're using Ionic
    ```
+4. Install Leaflet `npm i leaflet`
+5. Install Leaflet.Locate `npm install leaflet.locatecontrol`
 
 ## Implementation in Your Source Code
 
