@@ -20,7 +20,7 @@ leaflet-locatecontrol-capacitor is compatible with iOS, Android, and Web.
 
 ## Installation
 
-1. Copy the `L.Control.Locate.js` file into your project's `src` folder.
+1. Copy the [L.Control.Locate.js](https://github.com/joazco/leaflet-locatecontrol-capacitor/blob/main/L.Control.Locate.js) file into your project's `src` folder.
 2. Import the script in your project by adding the following line to your code:
    ```javascript
    import "src/L.Control.Locate.js";
